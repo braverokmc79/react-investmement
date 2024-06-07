@@ -2,7 +2,7 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/RootLayout.tsx";
 import InvetMentCalculate from "./pages/InvetMentCalculate/InvetMentCalculate.tsx";
-import AddUser from "./componets/Users/AddUser.tsx";
+import AddUserPage from "./pages/AddUser/AddUserPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'addUser',      
-        element: <AddUser />,
+        element: <AddUserPage />,
       }
     ]
   },
