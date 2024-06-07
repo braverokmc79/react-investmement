@@ -5,10 +5,15 @@ import classes from "./AddUser.module.css";
 export type UserType = {
   username: string;
   age: number;
+  id:string;
 };
 
-const AddUser: React.FC = () => {
-  const [enteredInput, setEnteredInput] = useState<UserType>({username: '', age:0 });
+interface AddUserProps{
+  onAddUser: (user: UserType) => void;
+}
+
+const AddUser: React.FC<AddUserProps> = (props) => {
+  const [enteredInput, setEnteredInput] = useState<UserType>({username: '', age:0 ,id: ''});
 
   const addUserHandler = (event: React.FormEvent) => {
     event.preventDefault();
@@ -16,8 +21,9 @@ const AddUser: React.FC = () => {
     if(!enteredInput || enteredInput.username.trim().length === 0 || enteredInput.age<=0 ) {
       return; 
     }
-    setEnteredInput({username: '', age: 0});
-    console.log("enteredInput:", enteredInput);
+    props.onAddUser(enteredInput);
+
+    setEnteredInput({username: '', age: 0, id:''});
   };
 
   const inputChangeHandler = (key: string, value: string) => {
@@ -29,7 +35,6 @@ const AddUser: React.FC = () => {
     });
   };
 
- 
 
   return (
     <Card className={classes.input}>
@@ -48,6 +53,7 @@ const AddUser: React.FC = () => {
           type="number"
           value={enteredInput.age}
           onChange={(event) => inputChangeHandler("age", event.target.value)}
+          min={0}
         />
         <div className="text-center">
           <button type="submit" className="button">

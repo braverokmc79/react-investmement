@@ -13,8 +13,8 @@ const UsersList: React.FC<UserListProps> = (props) => {
     <Card className={classes.users}>
       <ul>
         {props.users.map((user) => (
-          <li>
-            {user.username} ({user.age} 세)
+          <li key={user.id}>
+            {user.username} ({user.age}세)
           </li>
         ))}
       </ul>
