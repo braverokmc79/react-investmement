@@ -1,5 +1,6 @@
 import React from "react";
 import {formatterKR}   from "../../utils/Currency";
+import classes from  "./ResultsTable.module.css";
 
 interface YearlyData {
   year: number;
@@ -16,9 +17,8 @@ interface ResultsTableProps {
 const ResultsTable: React.FC<ResultsTableProps> = (props) => {
 
 
- 
   return (
-    <table className="result">
+    <table className={classes.result}>
       <thead>
         <tr>
           <th>년도</th>
